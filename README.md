@@ -6,6 +6,3 @@ El jefe de edición tiene que preparar el resumen de periódico, que tiene 10 p�
 
 ![image](https://github.com/user-attachments/assets/b3422a1a-1744-46c2-a38e-8cfabff9fbf0)
 
-Vídeo, aplicativo en función: 
-https://drive.google.com/file/d/1bbjAjbY8zwXr3Inrg9Us9IzFvQaWLEt8/view?usp=sharin
-g
