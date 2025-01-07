@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="row offset-md-3">
+    <div class="col pt-2">
+        Ganancia:
+        <input type="text" min="1" class="form-control" name="capacidad" disabled placeholder="Ingrese la cantidad"
+            value="{{resultado.utilidad}} lectores">
+    </div>
+    <div class="col-md-7">
+        <table class="table table-responsive w-100 table-striped" id="tablaDatos">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="font-weight-bold">Topics</th>
+                    <th class="font-weight-bold">Number of pages</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tema in resultado.temas %}
+                <tr>
+                    <td>
+                        {{tema.nombre}}
+                    </td>
+                    <td>
+                        {{tema.paginas}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<a href="/" class="btn btn-success">
+    <i class="fa-solid fa-arrow-left-long"></i>&nbsp;VOLVER
+</a>
+{% endblock content %}

@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<form action="/" method="post" class="needs-validation" novalidate>
+  <div class="row">
+    <div class="col-md-3 offset-md-4 pt-2">
+      Numero de paginas disponibles:
+    </div>
+    <div class="col-md-3">
+      <input type="number" min="1" class="form-control" name="capacidad" required placeholder="Ingrese la cantidad" value="10">
+      <div class="invalid-feedback">
+        Ingrese una capacidad válida mayor igual a 1.
+      </div>
+    </div>
+  </div>
+  <div class="row pt-2">
+      <div class="col-md-12">
+        <table class="table table-responsive w-100 table-striped" id="tablaDatos">
+          <thead class="thead-dark">
+            <tr>
+              <th class="font-weight-bold">Topics</th>
+              <th class="font-weight-bold">Min nb of pages</th>
+              <th class="font-weight-bold">Max nb of pages</th>
+              <th class="font-weight-bold">Potential readers (per page)</th>
+              <th>
+                <button type="button" class="btn btn-success" id="newTopic">
+                  Añadir
+                </button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td colspan="4">
+                <div class="invalid-feedback" id="mensajeNinguno">
+                  Debe crear al menos un tema para realizar el calculo
+                </div>
+              </td>
+            </tr>
+              <tr id="example" class="d-none">
+                  <td class="font-weight-bold">
+                    <input placeholder="Ingrese el Tema" class="form-control newTopicLabel tema" name="tema" type="text">
+                    <div class="invalid-feedback">
+                      Ingrese un nombre de Tema válido y no repetido
+                    </div>
+                  </td>
+                  <td>
+                    <input class="form-control min" type="number" min="0" name="min" id="min">
+                    <div class="invalid-feedback">
+                      Por favor ingrese un valor válido<br> Menor o igual al máximo.
+                    </div>
+                  </td>
+                  <td>
+                    <input class="form-control max" type="number" min="0" name="max" id="max">
+                    <div class="invalid-feedback">
+                      Por favor ingrese un valor válido<br> Mayor o igual al mínimo.
+                    </div>
+                  </td>
+                  <td>
+                    <input class="form-control potencial" type="number" min="0" name="potencial" id="potencial">
+                    <div class="invalid-feedback">
+                      Por favor ingrese un valor válido <br>
+                      Mayor o igual a cero  
+                    </div>
+                  </td>
+                  <td>
+                    <button class="btn btn-success addTopic" type="button">
+                      Añadir
+                    </button>
+                  </td>
+                </tr>
+            <tr>
+              <td class="font-weight-bold">
+                International
+                <input type="text" class="d-none tema" name="tema" id="tema" value="International">
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="minInternational" id="minInternational">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Menor o igual al máximo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="maxInternational" id="maxInternational">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Mayor o igual al mínimo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="potencialInternational" id="potencialInternational">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido <br>
+                  Mayor o igual a cero  
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-danger removeTopic" type="button">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">
+                National
+                <input type="text" class="d-none tema" name="tema" id="tema" value="National">
+  
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="minNational" id="minNational">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Menor o igual al máximo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="maxNational" id="maxNational">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Mayor o igual al mínimo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="potencialNational" id="potencialNational">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido <br>
+                  Mayor o igual a cero  
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-danger removeTopic" type="button">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">
+                Local-News News
+                <input type="text" class="d-none tema" name="tema" id="tema" value="Local-News">
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="minLocal-News" id="minLocal-News">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Menor o igual al máximo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="maxLocal-News" id="maxLocal-News">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Mayor o igual al mínimo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="potencialLocal-News" id="potencialLocal-News">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido <br>
+                  Mayor o igual a cero  
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-danger removeTopic" type="button">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">
+                Sport
+                <input type="text" class="d-none tema" name="tema" id="tema" value="Sport">
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="minSport" id="minSport">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Menor o igual al máximo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="maxSport" id="maxSport">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Mayor o igual al mínimo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="potencialSport" id="potencialSport">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido <br>
+                  Mayor o igual a cero  
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-danger removeTopic" type="button">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td class="font-weight-bold">
+                Culture
+                <input type="text" class="d-none tema" name="tema" id="tema" value="Culture">
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="minCulture" id="minCulture">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Menor o igual al máximo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="maxCulture" id="maxCulture">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido<br> Mayor o igual al mínimo.
+                </div>
+              </td>
+              <td>
+                <input required class="form-control" type="number" min="0" name="potencialCulture" id="potencialCulture">
+                <div class="invalid-feedback">
+                  Por favor ingrese un valor válido <br>
+                  Mayor o igual a cero  
+                </div>
+              </td>
+              <td>
+                <button class="btn btn-danger removeTopic" type="button">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+    
+      <button type="submit" id="calcular" class="btn btn-primary">
+        <i class="fa-solid fa-calculator"></i>&nbsp;Calcular
+      </button>
+</form>
+{% endblock content %}
+    
